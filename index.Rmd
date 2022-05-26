@@ -40,5 +40,5 @@ Inline App
 
 ### Map
 ```{r eval = FALSE}
-leaflet(data=df) %>% addTiles()  %>% addMarkers(lng = ~longitude, lat = ~latitude, layerId = ~ids) %>% setView(lng = 125 , lat = mapcenter33, zoom = 12)
+leaflet(data=df) %>% addTiles()  %>% addMarkers(lng = ~longitude, lat = ~latitude, layerId = ~ids) %>% setView(lng = 125 , lat = 33, zoom = 12)
 ```
