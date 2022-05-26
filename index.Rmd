@@ -1,6 +1,5 @@
 ---
 title: "풍력 발전량 산정"
-runtime: shiny
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
