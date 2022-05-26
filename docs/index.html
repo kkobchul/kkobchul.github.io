@@ -2632,7 +2632,6 @@ window.FlexDashboardComponents.push({
 
 <div id="section-inline-app" class="section level1">
 <h1>Inline App</h1>
-<p>install.packages(“leaflet”)</p>
 <div id="section-map" class="section level3">
 <h3>Map</h3>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
@@ -2700,11 +2699,9 @@ df2<-rbind(df2,data.frame(name=paste0(tmp1[2,1]," ",tmp1[1,1]),wspd=as.numeric(t
 Inline App
 =======================================================================
 
-install.packages("leaflet")
-
 ### Map
 ```{r eval = FALSE}
-leaflet(data=df) %>% addTiles()  %>% addMarkers(lng = ~longitude, lat = ~latitude, layerId = ~ids)
+leaflet(data=df) %>% addTiles()  %>% addMarkers(lng = ~longitude, lat = ~latitude, layerId = ~ids) %>% setView(lng = 125 , lat = mapcenter33, zoom = 12)
 ```
 </code></pre>
 </div>
