@@ -1,11 +1,6 @@
 ---
 title: "풍력 발전량 산정"
-output: 
-  flexdashboard::flex_dashboard:
-    orientation: columns
-    vertical_layout: fill
-    social: menu
-    source_code: embed
+output: html_document 
 runtime: shiny
 ---
 
@@ -14,7 +9,7 @@ library(shiny)
 library(leaflet)
 ```
 
-```{r}
+```{r, echo=FALSE}
 r_colors <- rgb(t(col2rgb(colors()) / 255))
 names(r_colors) <- colors()
 
