@@ -47,7 +47,9 @@ shinyApp(
   ui = fillPage(
     fillCol(flex = c(NA, 1), 
       inputPanel(
-        dateRangeInput(inputId='dateRange',label = '날짜 선택')
+        #dateRangeInput(inputId='dateRange',label = '날짜 선택')
+        selectInput("region", "Region:", choices=c("A","B","C"))
+
       )
     )
   ),
