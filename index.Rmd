@@ -43,20 +43,13 @@ Inline App
 ### Inline Shiny App via shinyApp
 
 ```{r}
-shinyApp(
-  ui = fillPage(
-    fillCol(flex = c(NA, 1), 
-      inputPanel(
-        #dateRangeInput(inputId='dateRange',label = '날짜 선택')
-        selectInput("region", "Region:", choices=c("A","B","C"))
-
-      )
-    )
-  ),
-  server = function(input, output) {
-  },
-  options = list(height = 600)
+ui <- fluidPage(
+        dateRangeInput("daterange1", "Date range:",
+                 start = "2001-01-01",
+                 end   = "2010-12-31")
 )
+
+shinyApp(ui,  server = function(input, output) {}, options = list(height = 600))
 ```
 
 

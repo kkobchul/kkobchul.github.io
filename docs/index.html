@@ -2640,7 +2640,7 @@ window.FlexDashboardComponents.push({
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<p><iframe data-deferred-src="app5ba03b03238e2e36c3256bed55ff4f1e/?w=&amp;__subapp__=1" width="100%" height="600" class="shiny-frame shiny-frame-deferred"></iframe></p>
+<p><iframe data-deferred-src="appc7b8001a5b4febf0113cbd1f753272b4/?w=&amp;__subapp__=1" width="100%" height="600" class="shiny-frame shiny-frame-deferred"></iframe></p>
 </div>
 </div>
 
@@ -2708,20 +2708,13 @@ Inline App
 ### Inline Shiny App via shinyApp
 
 ```{r}
-shinyApp(
-  ui = fillPage(
-    fillCol(flex = c(NA, 1), 
-      inputPanel(
-        #dateRangeInput(inputId='dateRange',label = '날짜 선택')
-        selectInput("region", "Region:", choices=c("A","B","C"))
-
-      )
-    )
-  ),
-  server = function(input, output) {
-  },
-  options = list(height = 600)
+ui <- fluidPage(
+        dateRangeInput("daterange1", "Date range:",
+                 start = "2001-01-01",
+                 end   = "2010-12-31")
 )
+
+shinyApp(ui,  server = function(input, output) {}, options = list(height = 600))
 ```
 
 
