@@ -1,5 +1,6 @@
 ---
 title: "풍력 발전량 산정"
+runtime: shiny
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
@@ -37,7 +38,9 @@ df2<-rbind(df2,data.frame(name=paste0(tmp1[2,1]," ",tmp1[1,1]),wspd=as.numeric(t
 Inline App
 =======================================================================
 
+Sidebar {.sidebar}
+
 ### Map
-```{r eval = FALSE}
-leaflet(data=df) %>% addTiles()  %>% addMarkers(lng = ~longitude, lat = ~latitude, layerId = ~ids) %>% setView(lng = 125 , lat = 33, zoom = 12)
+```{r}
+dateRangeInput(inputId='dateRange',label = '날짜 선택')
 ```

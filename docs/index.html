@@ -46,6 +46,13 @@ window.FlexDashboardComponents = [];
 <script src="site_libs/featherlight-1.3.5/featherlight.min.js"></script>
 <link href="site_libs/prism-1.4.1/prism.css" rel="stylesheet" />
 <script src="site_libs/prism-1.4.1/prism.js"></script>
+<script src="shared/datepicker/js/bootstrap-datepicker.min.js"></script>
+<script>(function() {
+        var datepicker = $.fn.datepicker.noConflict();
+        $.fn.bsDatepicker = datepicker;
+      })();
+     </script>
+<link href="shared/datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" />
 <style type="text/css">
 
 /*
@@ -2630,12 +2637,23 @@ window.FlexDashboardComponents.push({
 
 <div id="dashboard-container">
 
-<div id="inline-app" class="section level1">
+<div id="section-inline-app" class="section level1">
 <h1>Inline App</h1>
-<div id="map" class="section level3">
+<p>Sidebar {.sidebar}</p>
+<div id="section-map" class="section level3">
 <h3>Map</h3>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
+</div>
+<div id="dateRange" class="shiny-date-range-input form-group shiny-input-container">
+<label class="control-label" id="dateRange-label" for="dateRange">날짜 선택</label>
+<div class="input-daterange input-group input-group-sm">
+<input class="form-control" type="text" aria-labelledby="dateRange-label" title="Date format: yyyy-mm-dd" data-date-language="en" data-date-week-start="0" data-date-format="yyyy-mm-dd" data-date-start-view="month" data-date-autoclose="true"/>
+<span class="input-group-addon input-group-prepend input-group-append">
+<span class="input-group-text"> to </span>
+</span>
+<input class="form-control" type="text" aria-labelledby="dateRange-label" title="Date format: yyyy-mm-dd" data-date-language="en" data-date-week-start="0" data-date-format="yyyy-mm-dd" data-date-start-view="month" data-date-autoclose="true"/>
+</div>
 </div>
 </div>
 </div>
@@ -2661,6 +2679,7 @@ $(document).ready(function () {
 <div id="flexdashboard-source-code">
 <pre class="line-numbers"><code class="language-r">---
 title: "풍력 발전량 산정"
+runtime: shiny
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
@@ -2698,9 +2717,11 @@ df2<-rbind(df2,data.frame(name=paste0(tmp1[2,1]," ",tmp1[1,1]),wspd=as.numeric(t
 Inline App
 =======================================================================
 
+Sidebar {.sidebar}
+
 ### Map
-```{r eval = FALSE}
-leaflet(data=df) %>% addTiles()  %>% addMarkers(lng = ~longitude, lat = ~latitude, layerId = ~ids) %>% setView(lng = 125 , lat = 33, zoom = 12)
+```{r}
+dateRangeInput(inputId='dateRange',label = '날짜 선택')
 ```
 </code></pre>
 </div>
