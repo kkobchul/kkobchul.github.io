@@ -2637,12 +2637,8 @@ window.FlexDashboardComponents.push({
 
 <div id="dashboard-container">
 
-<div id="section-inline-app" class="section level1">
-<h1>Inline App</h1>
-<div id="section-sidebar" class="section level2 sidebar">
-<h2>Sidebar</h2>
-<div id="section-map" class="section level3">
-<h3>Map</h3>
+<div id="section-sidebar" class="section level1 sidebar">
+<h1>Sidebar</h1>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
@@ -2654,8 +2650,6 @@ window.FlexDashboardComponents.push({
 <span class="input-group-text"> to </span>
 </span>
 <input class="form-control" type="text" aria-labelledby="dateRange-label" title="Date format: yyyy-mm-dd" data-date-language="en" data-date-week-start="0" data-date-format="yyyy-mm-dd" data-date-start-view="month" data-date-autoclose="true"/>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -2716,13 +2710,9 @@ df2<-rbind(df2,data.frame(name=paste0(tmp1[2,1]," ",tmp1[1,1]),wspd=as.numeric(t
 }
 ```
 
-Inline App
+Sidebar {.sidebar}
 =======================================================================
 
-Sidebar {.sidebar}
---------------------------------------------------------------------
-
-### Map
 ```{r}
 dateRangeInput(inputId='dateRange',label = '날짜 선택')
 ```
