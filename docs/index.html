@@ -46,65 +46,6 @@ window.FlexDashboardComponents = [];
 <script src="site_libs/featherlight-1.3.5/featherlight.min.js"></script>
 <link href="site_libs/prism-1.4.1/prism.css" rel="stylesheet" />
 <script src="site_libs/prism-1.4.1/prism.js"></script>
-<script src="shared/datepicker/js/bootstrap-datepicker.min.js"></script>
-<script>(function() {
-        var datepicker = $.fn.datepicker.noConflict();
-        $.fn.bsDatepicker = datepicker;
-      })();
-     </script>
-<link href="shared/datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" />
-<link href="shared/selectize/css/selectize.bootstrap3.css" rel="stylesheet" />
-<script src="shared/selectize/js/selectize.min.js"></script>
-<script src="shared/selectize/accessibility/js/selectize-plugin-a11y.min.js"></script>
-<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
-<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="site_libs/leaflet-binding-2.1.1/leaflet.js"></script>
-<script src="site_libs/proj4js-2.3.15/proj4.js"></script>
-<link href="site_libs/highcharts-10.0.0/css/motion.css" rel="stylesheet" />
-<script src="site_libs/highcharts-10.0.0/highcharts.js"></script>
-<script src="site_libs/highcharts-10.0.0/highcharts-3d.js"></script>
-<script src="site_libs/highcharts-10.0.0/highcharts-more.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/stock.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/map.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/data.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/exporting.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/offline-exporting.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/drilldown.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/item-series.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/overlapping-datalabels.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/annotations.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/export-data.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/funnel.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/heatmap.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/treemap.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/sankey.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/dependency-wheel.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/organization.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/solid-gauge.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/streamgraph.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/sunburst.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/vector.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/wordcloud.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/xrange.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/tilemap.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/venn.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/gantt.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/timeline.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/parallel-coordinates.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/bullet.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/coloraxis.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/dumbbell.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/lollipop.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/series-label.js"></script>
-<script src="site_libs/highcharts-10.0.0/plugins/motion.js"></script>
-<script src="site_libs/highcharts-10.0.0/custom/reset.js"></script>
-<script src="site_libs/highcharts-10.0.0/modules/boost.js"></script>
-<script src="site_libs/highchart-binding-0.9.4.9000/highchart.js"></script>
 <style type="text/css">
 
 /*
@@ -2692,67 +2633,14 @@ window.FlexDashboardComponents.push({
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<div id="section-sidebar" class="section level1 sidebar">
-<h1>Sidebar</h1>
+<div id="section-inline-app" class="section level1">
+<h1>Inline App</h1>
+<div id="section-inline-shiny-app-via-shinyapp" class="section level3">
+<h3>Inline Shiny App via shinyApp</h3>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<div id="dateRange" class="shiny-date-range-input form-group shiny-input-container">
-<label class="control-label" id="dateRange-label" for="dateRange">날짜 선택</label>
-<div class="input-daterange input-group input-group-sm">
-<input class="form-control" type="text" aria-labelledby="dateRange-label" title="Date format: yyyy-mm-dd" data-date-language="en" data-date-week-start="0" data-date-format="yyyy-mm-dd" data-date-start-view="month" data-initial-date="2021-01-01" data-date-autoclose="true"/>
-<span class="input-group-addon input-group-prepend input-group-append">
-<span class="input-group-text"> to </span>
-</span>
-<input class="form-control" type="text" aria-labelledby="dateRange-label" title="Date format: yyyy-mm-dd" data-date-language="en" data-date-week-start="0" data-date-format="yyyy-mm-dd" data-date-start-view="month" data-initial-date="2021-12-31" data-date-autoclose="true"/>
-</div>
-</div>
-<div class="form-group shiny-input-container">
-<label class="control-label" id="wpgSelect-label" for="wpgSelect">발전기 선택</label>
-<div>
-<select id="wpgSelect"><option value="Doosan WinDS5560" selected>Doosan WinDS5560</option>
-<option value="Enercon E-82-E3">Enercon E-82-E3</option>
-<option value="GE GE.5500-158">GE GE.5500-158</option>
-<option value="GE Haliade.150-6MW">GE Haliade.150-6MW</option>
-<option value="Hyosung HS139.5.5MW">Hyosung HS139.5.5MW</option>
-<option value="Siemens SWT-8.0-167">Siemens SWT-8.0-167</option>
-<option value="Unison U136-4.2MW">Unison U136-4.2MW</option>
-<option value="Unison U151-4.3MW">Unison U151-4.3MW</option>
-<option value="Vestas V150-5.6MW">Vestas V150-5.6MW</option>
-<option value="Vestas V80-2MW">Vestas V80-2MW</option>
-<option value="Vestas V90-3MW">Vestas V90-3MW</option></select>
-<script type="application/json" data-for="wpgSelect" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
-</div>
-</div>
-</div>
-<div id="section-과거-발전량" class="section level1">
-<h1>과거 발전량</h1>
-<div id="section-column" class="section level2">
-<h2>Column</h2>
-<div id="section-map" class="section level3">
-<h3>Map</h3>
-<div class="knitr-options" data-fig-width="576" data-fig-height="460">
-
-</div>
-<p><div id="out181b5b06f09e1890" style="width:100%; height:400px; " class="leaflet html-widget html-widget-output"></div></p>
-</div>
-</div>
-<div id="section-column-1" class="section level2">
-<h2>Column</h2>
-<div id="section-highchart1" class="section level3">
-<h3>HighChart1</h3>
-<div class="knitr-options" data-fig-width="576" data-fig-height="460">
-
-</div>
-<p><div id="out02f9f10178d01a2a" style="width:100%; height:400px; " class="highchart html-widget html-widget-output"></div></p>
-</div>
-<div id="section-highchart2" class="section level3">
-<h3>HighChart2</h3>
-<div class="knitr-options" data-fig-width="576" data-fig-height="460">
-
-</div>
-<p><div id="out91542dd7a0804d99" style="width:100%; height:400px; " class="highchart html-widget html-widget-output"></div></p>
-</div>
+<p><iframe data-deferred-src="app3f83bee8c465b56c6e02068297700ad7/?w=&amp;__subapp__=1" width="100%" height="600" class="shiny-frame shiny-frame-deferred"></iframe></p>
 </div>
 </div>
 
@@ -2814,94 +2702,27 @@ df2<-rbind(df2,data.frame(name=paste0(tmp1[2,1]," ",tmp1[1,1]),wspd=as.numeric(t
 }
 ```
 
-Sidebar {.sidebar}
-======================================================
+Inline App
+=======================================================================
+
+### Inline Shiny App via shinyApp
 
 ```{r}
-dateRangeInput(inputId='dateRange',label = '날짜 선택',start = min(df1$dates), end = max(df1$dates))
-
-selectInput(inputId="wpgSelect",label="발전기 선택",choices=sort(unique(as.character(df2$name))))
+shinyApp(
+  ui = fillPage(
+    fillCol(flex = c(NA, 1), 
+      inputPanel(
+        dateRangeInput(inputId='dateRange',label = '날짜 선택')
+      )
+    )
+  ),
+  server = function(input, output) {
+  },
+  options = list(height = 600)
+)
 ```
 
-과거 발전량
-========================================================
 
-Column 
--------------------------------------
-
-### Map
-```{r}
-#output$map <- renderLeaflet({
-renderLeaflet({
-
-leaflet(data=df) %>% addTiles()  %>% addMarkers(lng = ~longitude, lat = ~latitude, layerId = ~ids)
-
-})
-
-#leafletOutput('map')
-```
-
-Column
--------------------------------------
-
-### HighChart1
-```{r}
-click_marker <- eventReactive(input$map_marker_click, {
-
-  x <- input$map_marker_click
-
-  return(x$id)
-
-})
-
-data_for_chart1 <- reactive({
-
-  return(df1[df1$ids == click_marker() & (df1$dates >= input$dateRange[1] & df1$dates <= input$dateRange[2]),])
-
-})
-
-#output$chart1 <- renderHighchart({
-renderHighchart({
-
-  highchart() %>%
-    hc_chart(type = 'column') %>%
-    hc_add_series(data = c(data_for_chart1()$wspd))
-
-})
-
-#highchartOutput('chart1')
-```
-
-### HighChart2
-```{r}
-click_marker <- eventReactive(input$map_marker_click, {
-
-  x <- input$map_marker_click
-
-  return(x$id)
-
-})
-
-data_for_chart2 <- reactive({
-
-  df10<-df1[df1$ids == click_marker() & (df1$dates >= input$dateRange[1] & df1$dates <= input$dateRange[2]),]
-  df20<-df2[df2$name == input$wpgSelect,]
-  df20<-distinct(df20,.keep_all = TRUE)
-  return(data.frame(wp=round(interp1(df20$wspd,df20$wp,xi=df10$wspd,method="linear"),1)))
-
-})
-
-#output$chart2 <- renderHighchart({
-renderHighchart({
-  
-  highchart() %>%
-    hc_chart(type = 'column') %>%
-    hc_add_series(data = c(data_for_chart2()$wp))
-
-})
-
-#highchartOutput('chart2')
-```
 </code></pre>
 </div>
 <script type="text/javascript">
