@@ -2639,7 +2639,8 @@ window.FlexDashboardComponents.push({
 
 <div id="section-inline-app" class="section level1">
 <h1>Inline App</h1>
-<p>Sidebar {.sidebar}</p>
+<div id="section-sidebar" class="section level2 sidebar">
+<h2>Sidebar</h2>
 <div id="section-map" class="section level3">
 <h3>Map</h3>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
@@ -2653,6 +2654,7 @@ window.FlexDashboardComponents.push({
 <span class="input-group-text"> to </span>
 </span>
 <input class="form-control" type="text" aria-labelledby="dateRange-label" title="Date format: yyyy-mm-dd" data-date-language="en" data-date-week-start="0" data-date-format="yyyy-mm-dd" data-date-start-view="month" data-date-autoclose="true"/>
+</div>
 </div>
 </div>
 </div>
@@ -2679,13 +2681,13 @@ $(document).ready(function () {
 <div id="flexdashboard-source-code">
 <pre class="line-numbers"><code class="language-r">---
 title: "풍력 발전량 산정"
-runtime: shiny
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
     social: menu
     source_code: embed
+runtime: shiny
 ---
 
 ```{r setup, include=FALSE}
@@ -2718,6 +2720,7 @@ Inline App
 =======================================================================
 
 Sidebar {.sidebar}
+--------------------------------------------------------------------
 
 ### Map
 ```{r}

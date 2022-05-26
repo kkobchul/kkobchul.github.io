@@ -1,12 +1,12 @@
 ---
 title: "풍력 발전량 산정"
-runtime: shiny
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
     social: menu
     source_code: embed
+runtime: shiny
 ---
 
 ```{r setup, include=FALSE}
@@ -39,6 +39,7 @@ Inline App
 =======================================================================
 
 Sidebar {.sidebar}
+--------------------------------------------------------------------
 
 ### Map
 ```{r}
