@@ -2630,17 +2630,13 @@ window.FlexDashboardComponents.push({
 
 <div id="dashboard-container">
 
-<div class="knitr-options" data-fig-width="576" data-fig-height="460">
-
-</div>
 <div id="section-inline-app" class="section level1">
 <h1>Inline App</h1>
-<div id="section-inline-shiny-app-via-shinyapp" class="section level3">
-<h3>Inline Shiny App via shinyApp</h3>
+<div id="section-map" class="section level3">
+<h3>Map</h3>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<p><iframe data-deferred-src="appc7b8001a5b4febf0113cbd1f753272b4/?w=&amp;__subapp__=1" width="100%" height="600" class="shiny-frame shiny-frame-deferred"></iframe></p>
 </div>
 </div>
 
@@ -2683,9 +2679,7 @@ library(highcharter)
 library(pracma)
 library(openxlsx)
 library(readr)
-```
 
-```{r data}
 df<-read.xlsx("/mnt/d/랩이앤이/회사사업/동네예보_풍력발전량예측/META_관측지점정보_20220519132705.xlsx",sheet=1,detectDates=TRUE) %>% rename(name=지점명,longitude=경도,latitude=위도,ids=지점) %>% as.data.frame  
 df1<-read_csv("/mnt/d/랩이앤이/회사사업/동네예보_풍력발전량예측/OBS_ASOS_TIM_20220519112933.csv",locale=locale('ko',encoding='euc-kr')) %>% set_names(c("ids","name","datetime","temp","wspd","wdir","humd","mslp")) %>% mutate(dates=as.Date(datetime,format="%Y-%m-%d")) %>% as.data.frame
 
@@ -2705,19 +2699,10 @@ df2<-rbind(df2,data.frame(name=paste0(tmp1[2,1]," ",tmp1[1,1]),wspd=as.numeric(t
 Inline App
 =======================================================================
 
-### Inline Shiny App via shinyApp
-
-```{r}
-ui <- fluidPage(
-        dateRangeInput("daterange1", "Date range:",
-                 start = "2001-01-01",
-                 end   = "2010-12-31")
-)
-
-shinyApp(ui,  server = function(input, output) {}, options = list(height = 600))
+### Map
+```{r eval = FALSE}
+leaflet(data=df) %>% addTiles()  %>% addMarkers(lng = ~longitude, lat = ~latitude, layerId = ~ids)
 ```
-
-
 </code></pre>
 </div>
 <script type="text/javascript">

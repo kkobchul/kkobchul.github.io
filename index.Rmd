@@ -18,9 +18,7 @@ library(highcharter)
 library(pracma)
 library(openxlsx)
 library(readr)
-```
 
-```{r data}
 df<-read.xlsx("/mnt/d/랩이앤이/회사사업/동네예보_풍력발전량예측/META_관측지점정보_20220519132705.xlsx",sheet=1,detectDates=TRUE) %>% rename(name=지점명,longitude=경도,latitude=위도,ids=지점) %>% as.data.frame  
 df1<-read_csv("/mnt/d/랩이앤이/회사사업/동네예보_풍력발전량예측/OBS_ASOS_TIM_20220519112933.csv",locale=locale('ko',encoding='euc-kr')) %>% set_names(c("ids","name","datetime","temp","wspd","wdir","humd","mslp")) %>% mutate(dates=as.Date(datetime,format="%Y-%m-%d")) %>% as.data.frame
 
@@ -40,16 +38,7 @@ df2<-rbind(df2,data.frame(name=paste0(tmp1[2,1]," ",tmp1[1,1]),wspd=as.numeric(t
 Inline App
 =======================================================================
 
-### Inline Shiny App via shinyApp
-
-```{r}
-ui <- fluidPage(
-        dateRangeInput("daterange1", "Date range:",
-                 start = "2001-01-01",
-                 end   = "2010-12-31")
-)
-
-shinyApp(ui,  server = function(input, output) {}, options = list(height = 600))
+### Map
+```{r eval = FALSE}
+leaflet(data=df) %>% addTiles()  %>% addMarkers(lng = ~longitude, lat = ~latitude, layerId = ~ids)
 ```
-
-
