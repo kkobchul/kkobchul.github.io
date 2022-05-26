@@ -6,38 +6,37 @@ output:
     vertical_layout: fill
     social: menu
     source_code: embed
-runtime: shiny
 ---
 
 ```{r setup, include=FALSE}
-library(flexdashboard)
 library(shiny)
-library(tidyverse)
 library(leaflet)
-library(highcharter)
-library(pracma)
-library(openxlsx)
-library(readr)
-
-df<-read.xlsx("/mnt/d/랩이앤이/회사사업/동네예보_풍력발전량예측/META_관측지점정보_20220519132705.xlsx",sheet=1,detectDates=TRUE) %>% rename(name=지점명,longitude=경도,latitude=위도,ids=지점) %>% as.data.frame  
-df1<-read_csv("/mnt/d/랩이앤이/회사사업/동네예보_풍력발전량예측/OBS_ASOS_TIM_20220519112933.csv",locale=locale('ko',encoding='euc-kr')) %>% set_names(c("ids","name","datetime","temp","wspd","wdir","humd","mslp")) %>% mutate(dates=as.Date(datetime,format="%Y-%m-%d")) %>% as.data.frame
-
-filename<-"/mnt/d/랩이앤이/회사사업/날씨경영솔루션_구축지원사업/파워커브모음.xlsx"
-sheets <- getSheetNames(filename)
-SheetList <- lapply(sheets,read.xlsx,xlsxFile=filename)
-names(SheetList) <- sheets
-
-df2<-data.frame()
-for (i in c(1:length(SheetList))){
-tmp<-SheetList[[i]]
-tmp1<-str_split(names(tmp),pattern=' ',simplify = TRUE)
-df2<-rbind(df2,data.frame(name=paste0(tmp1[2,1]," ",tmp1[1,1]),wspd=as.numeric(tmp[,1]),wp=as.numeric(tmp[,2])) %>% mutate(wspd=ifelse(is.na(wspd),0,wspd),wp=ifelse(is.na(wp),0,wp)))
-}
 ```
 
-Sidebar {.sidebar}
-=======================================================================
-
 ```{r}
-dateRangeInput(inputId='dateRange',label = '날짜 선택')
+r_colors <- rgb(t(col2rgb(colors()) / 255))
+names(r_colors) <- colors()
+
+ui <- fluidPage(
+  leafletOutput("mymap"),
+  p(),
+  actionButton("recalc", "New points")
+)
+
+server <- function(input, output, session) {
+
+  points <- eventReactive(input$recalc, {
+    cbind(rnorm(40) * 2 + 13, rnorm(40) + 48)
+  }, ignoreNULL = FALSE)
+
+  output$mymap <- renderLeaflet({
+    leaflet() %>%
+      addProviderTiles(providers$Stamen.TonerLite,
+        options = providerTileOptions(noWrap = TRUE)
+      ) %>%
+      addMarkers(data = points())
+  })
+}
+
+shinyApp(ui, server)
 ```

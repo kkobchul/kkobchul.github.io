@@ -46,13 +46,6 @@ window.FlexDashboardComponents = [];
 <script src="site_libs/featherlight-1.3.5/featherlight.min.js"></script>
 <link href="site_libs/prism-1.4.1/prism.css" rel="stylesheet" />
 <script src="site_libs/prism-1.4.1/prism.js"></script>
-<script src="shared/datepicker/js/bootstrap-datepicker.min.js"></script>
-<script>(function() {
-        var datepicker = $.fn.datepicker.noConflict();
-        $.fn.bsDatepicker = datepicker;
-      })();
-     </script>
-<link href="shared/datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" />
 <style type="text/css">
 
 /*
@@ -2637,22 +2630,10 @@ window.FlexDashboardComponents.push({
 
 <div id="dashboard-container">
 
-<div id="section-sidebar" class="section level1 sidebar">
-<h1>Sidebar</h1>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<div id="dateRange" class="shiny-date-range-input form-group shiny-input-container">
-<label class="control-label" id="dateRange-label" for="dateRange">날짜 선택</label>
-<div class="input-daterange input-group input-group-sm">
-<input class="form-control" type="text" aria-labelledby="dateRange-label" title="Date format: yyyy-mm-dd" data-date-language="en" data-date-week-start="0" data-date-format="yyyy-mm-dd" data-date-start-view="month" data-date-autoclose="true"/>
-<span class="input-group-addon input-group-prepend input-group-append">
-<span class="input-group-text"> to </span>
-</span>
-<input class="form-control" type="text" aria-labelledby="dateRange-label" title="Date format: yyyy-mm-dd" data-date-language="en" data-date-week-start="0" data-date-format="yyyy-mm-dd" data-date-start-view="month" data-date-autoclose="true"/>
-</div>
-</div>
-</div>
+<p><div style="width: 100% ; height: 400px ; text-align: center; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;" class="muted well">Shiny applications not supported in static R Markdown documents</div></p>
 
 </div>
 
@@ -2681,40 +2662,39 @@ output:
     vertical_layout: fill
     social: menu
     source_code: embed
-runtime: shiny
 ---
 
 ```{r setup, include=FALSE}
-library(flexdashboard)
 library(shiny)
-library(tidyverse)
 library(leaflet)
-library(highcharter)
-library(pracma)
-library(openxlsx)
-library(readr)
-
-df<-read.xlsx("/mnt/d/랩이앤이/회사사업/동네예보_풍력발전량예측/META_관측지점정보_20220519132705.xlsx",sheet=1,detectDates=TRUE) %>% rename(name=지점명,longitude=경도,latitude=위도,ids=지점) %>% as.data.frame  
-df1<-read_csv("/mnt/d/랩이앤이/회사사업/동네예보_풍력발전량예측/OBS_ASOS_TIM_20220519112933.csv",locale=locale('ko',encoding='euc-kr')) %>% set_names(c("ids","name","datetime","temp","wspd","wdir","humd","mslp")) %>% mutate(dates=as.Date(datetime,format="%Y-%m-%d")) %>% as.data.frame
-
-filename<-"/mnt/d/랩이앤이/회사사업/날씨경영솔루션_구축지원사업/파워커브모음.xlsx"
-sheets <- getSheetNames(filename)
-SheetList <- lapply(sheets,read.xlsx,xlsxFile=filename)
-names(SheetList) <- sheets
-
-df2<-data.frame()
-for (i in c(1:length(SheetList))){
-tmp<-SheetList[[i]]
-tmp1<-str_split(names(tmp),pattern=' ',simplify = TRUE)
-df2<-rbind(df2,data.frame(name=paste0(tmp1[2,1]," ",tmp1[1,1]),wspd=as.numeric(tmp[,1]),wp=as.numeric(tmp[,2])) %>% mutate(wspd=ifelse(is.na(wspd),0,wspd),wp=ifelse(is.na(wp),0,wp)))
-}
 ```
 
-Sidebar {.sidebar}
-=======================================================================
-
 ```{r}
-dateRangeInput(inputId='dateRange',label = '날짜 선택')
+r_colors <- rgb(t(col2rgb(colors()) / 255))
+names(r_colors) <- colors()
+
+ui <- fluidPage(
+  leafletOutput("mymap"),
+  p(),
+  actionButton("recalc", "New points")
+)
+
+server <- function(input, output, session) {
+
+  points <- eventReactive(input$recalc, {
+    cbind(rnorm(40) * 2 + 13, rnorm(40) + 48)
+  }, ignoreNULL = FALSE)
+
+  output$mymap <- renderLeaflet({
+    leaflet() %>%
+      addProviderTiles(providers$Stamen.TonerLite,
+        options = providerTileOptions(noWrap = TRUE)
+      ) %>%
+      addMarkers(data = points())
+  })
+}
+
+shinyApp(ui, server)
 ```
 </code></pre>
 </div>
